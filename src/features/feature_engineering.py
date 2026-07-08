@@ -2,7 +2,7 @@
 import numpy as np
 import pandas as pd
 import os
-from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
 import yaml
 import logging
 
@@ -57,7 +57,7 @@ def load_data(file_path: str) -> pd.DataFrame:
 def apply_bow(train_data: pd.DataFrame, test_data: pd.DataFrame, max_features: int) -> tuple:
     """Apply TfIdf to the data."""
     try:
-        vectorizer = CountVectorizer(max_features=max_features)
+        vectorizer = TfidfVectorizer(max_features=max_features)
 
         X_train = train_data['content'].values
         y_train = train_data['sentiment'].values
@@ -73,10 +73,10 @@ def apply_bow(train_data: pd.DataFrame, test_data: pd.DataFrame, max_features: i
         test_df = pd.DataFrame(X_test_bow.toarray())
         test_df['label'] = y_test
 
-        logger.debug('Bag of Words applied and data transformed')
+        logger.debug('Tfidf applied and data transformed')
         return train_df, test_df
     except Exception as e:
-        logger.error('Error during Bag of Words transformation: %s', e)
+        logger.error('Error during Tfidf transformation: %s', e)
         raise
 
 def save_data(df: pd.DataFrame, file_path: str) -> None:
@@ -99,8 +99,8 @@ def main():
 
         train_df, test_df = apply_bow(train_data, test_data, max_features)
 
-        save_data(train_df, os.path.join("./data", "processed", "train_bow.csv"))
-        save_data(test_df, os.path.join("./data", "processed", "test_bow.csv"))
+        save_data(train_df, os.path.join("./data", "processed", "train_tfidf.csv"))
+        save_data(test_df, os.path.join("./data", "processed", "test_tfidf.csv"))
     except Exception as e:
         logger.error('Failed to complete the feature engineering process: %s', e)
         print(f"Error: {e}")
