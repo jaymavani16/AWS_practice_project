@@ -1,10 +1,6 @@
 [core]
-<<<<<<< HEAD
+HEAD
     remote = aws_project_practice
-['remote "aws_remote"']
-    url = C:\Users\jayma\AppData\Local\Temp
-['remote "aws_project_practice"']
-    url = C:\Users\jayma\AppData\Local\Temp
 =======
     remote = awsdvc
 ['remote "awsdvc"']
