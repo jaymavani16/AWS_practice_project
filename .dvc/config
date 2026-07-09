@@ -1,2 +1,8 @@
+[core]
+    remote = awsdvc
 ['remote "aws_remote"']
     url = C:\Users\jayma\AppData\Local\Temp
+['remote "dvcstore"']
+    url = s3://awspracticeprojectbucketemotiondetection
+['remote "awsdvc"']
+    url = s3://awspracticeprojectbucketemotiondetection
