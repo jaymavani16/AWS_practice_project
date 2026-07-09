@@ -1,7 +1,4 @@
 [core]
-HEAD
-    remote = aws_project_practice
-=======
     remote = awsdvc
 ['remote "awsdvc"']
     url = s3://awspracticeprojectbucketemotiondetection
